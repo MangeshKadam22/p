@@ -22,47 +22,32 @@
       cursor: pointer;
     }
 
-    #chatButton:hover {
+    #chatButton: hover {
       background-color: #005fb2;
     }
   </style>
 </head>
 <body>
 
-  <h1>Need Help?</h1>
-  <p>Click the button below to chat with our agents.</p>
+  <script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 
-  <button id="chatButton">Chat with Agents</button>
-
-  <script type="text/javascript">
-    function initEmbeddedMessaging() {
-      try {
-        embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-
-        embeddedservice_bootstrap.init(
-          '00DgL000002qhhK',
-          'Agent_Web_Deployment',
-          'https://orgfarm-bc2ac59d9f-dev-ed.develop.my.site.com/ESWAgentWebDeployment1746606807967',
-          {
-            scrt2URL: 'https://orgfarm-bc2ac59d9f-dev-ed.develop.my.salesforce-scrt.com'
-          }
-        );
-      } catch (err) {
-        console.error('Error loading Embedded Messaging: ', err);
-      }
-    }
-
-    document.getElementById('chatButton').addEventListener('click', function () {
-      // Prevent multiple script loads
-      if (!document.getElementById('chatScript')) {
-        const script = document.createElement('script');
-        script.src = 'https://orgfarm-bc2ac59d9f-dev-ed.develop.my.site.com/ESWAgentWebDeployment1746606807967/assets/js/bootstrap.min.js';
-        script.id = 'chatScript';
-        script.onload = initEmbeddedMessaging;
-        document.body.appendChild(script);
-      }
-    });
-  </script>
+			embeddedservice_bootstrap.init(
+				'00DgL000002qhhK',
+				'Agent_Web_Deployment',
+				'https://orgfarm-bc2ac59d9f-dev-ed.develop.my.site.com/ESWAgentWebDeployment1746606807967',
+				{
+					scrt2URL: 'https://orgfarm-bc2ac59d9f-dev-ed.develop.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://orgfarm-bc2ac59d9f-dev-ed.develop.my.site.com/ESWAgentWebDeployment1746606807967/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
 </body>
 </html>
